@@ -15,8 +15,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 			maintainer="Jorge Andrada Prieto <jandradap@gmail.com>" \
 			org.label-schema.docker.cmd="docker run --rm --name coreos-clair-client -v $(pwd):/srv jorgeandrada/coreos-clair-client:latest"
 
-RUN apk add --update git \
+RUN apk add --update git docker \
 	&& rm -rf /var/cache/apk/* \
-  && go get -u github.com/coreos/clair/contrib/analyze-local-images
+	&& go get -u github.com/coreos/clair/contrib/analyze-local-images
 
 CMD ["analyze-local-images"]
